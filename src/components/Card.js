@@ -3,7 +3,8 @@ import { Button  } from "./Button";
 
 export const Card = () => {
   return(
-    <div className="border-4 border-solid rounded-md h-72 w-72 m-8 text-center divide-y divide-fuchsia-300">
+    <div className=" flex items-center justify-center">
+    <div className="border-4 border-solid rounded-md h-72 w-72 text-center divide-y divide-fuchsia-300">
       <div className="p-4">
         MOVIE TITLE - release date
       </div>
@@ -14,6 +15,6 @@ export const Card = () => {
         <Button>Watched </ Button>
         <Button>Want to watch</Button>
       </div>
-    </div>
+    </div></div>
   )
 }
