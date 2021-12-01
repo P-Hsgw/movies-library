@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "./Card";
-import uuid from 'react-uuid'
+import uuid from "react-uuid";
 
 export const Body = () => {
   const [movies, setMovies] = useState([
@@ -10,29 +10,20 @@ export const Body = () => {
       thumbnail: "PICTURE.JPG",
       isWatched: true,
     },
-
-    {
-      title: "Guardians of the Galaxy2",
-      releaseDate: "2018",
-      thumbnail: "PICTURE.JPG",
-      isWatched: true,
-    },
-    {
-      title: "Guardians of the Galaxy3",
-      releaseDate: "2018",
-      thumbnail: "PICTURE.JPG",
-      isWatched: true,
-    },
-    {
-      title: "Guardians of the Galaxy4",
-      releaseDate: "2018",
-      thumbnail: "PICTURE.JPG",
-      isWatched: true,
-    },
   ]);
 
-
-
+  async function fetchMovie(search) {
+    try {
+      const response = await fetch(
+        ` https://api.themoviedb.org/3/search/movie?api_key=9812bf8694ef69e36a998bad88ff117a&language=en-US&query=Dune&page=1&include_adult=false`,
+        { mode: "cors" }
+      );
+      const movie = await response.json();
+      console.log(movie);
+    } catch (error) {
+      alert("Error:" + error);
+    }
+  }
 
   const fillMovie = (title, releaseDate, thumbnail, isWatched) => {
     setMovies({
