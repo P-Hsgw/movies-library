@@ -1,8 +1,33 @@
 import React, { useState } from "react";
 import { Card } from "./Card";
+import uuid from 'react-uuid'
 
 export const Body = () => {
   const [movies, setMovies] = useState([
+    {
+      title: "Title",
+      releaseDate: "1992",
+      thumbnail: "brre",
+      isWatched: false,
+    },
+    {
+      title: "Title",
+      releaseDate: "1992",
+      thumbnail: "brre",
+      isWatched: false,
+    },
+    {
+      title: "Title",
+      releaseDate: "1992",
+      thumbnail: "brre",
+      isWatched: false,
+    },
+    {
+      title: "Title",
+      releaseDate: "1992",
+      thumbnail: "brre",
+      isWatched: false,
+    },
     {
       title: "Title",
       releaseDate: "1992",
@@ -23,7 +48,7 @@ export const Body = () => {
   const movieCards = movies.map(
     ({ title, releaseDate, thumbnail, isWatched }) => (
       <Card
-        key={title}
+        key={uuid()}
         title={title}
         releaseDate={releaseDate}
         thumbnail={thumbnail}
