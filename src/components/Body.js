@@ -8,7 +8,7 @@ export const Body = () => {
       title: "Title",
       releaseDate: "1992",
       thumbnail: "brre",
-      isWatched: false,
+      isWatched: true,
     },
     {
       title: "Title",
