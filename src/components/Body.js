@@ -5,36 +5,34 @@ import uuid from 'react-uuid'
 export const Body = () => {
   const [movies, setMovies] = useState([
     {
-      title: "Title",
-      releaseDate: "1992",
-      thumbnail: "brre",
+      title: "Guardians of the Galaxy",
+      releaseDate: "2018",
+      thumbnail: "PICTURE.JPG",
+      isWatched: true,
+    },
+
+    {
+      title: "Guardians of the Galaxy2",
+      releaseDate: "2018",
+      thumbnail: "PICTURE.JPG",
       isWatched: true,
     },
     {
-      title: "Title",
-      releaseDate: "1992",
-      thumbnail: "brre",
-      isWatched: false,
+      title: "Guardians of the Galaxy3",
+      releaseDate: "2018",
+      thumbnail: "PICTURE.JPG",
+      isWatched: true,
     },
     {
-      title: "Title",
-      releaseDate: "1992",
-      thumbnail: "brre",
-      isWatched: false,
-    },
-    {
-      title: "Title",
-      releaseDate: "1992",
-      thumbnail: "brre",
-      isWatched: false,
-    },
-    {
-      title: "Title",
-      releaseDate: "1992",
-      thumbnail: "brre",
-      isWatched: false,
+      title: "Guardians of the Galaxy4",
+      releaseDate: "2018",
+      thumbnail: "PICTURE.JPG",
+      isWatched: true,
     },
   ]);
+
+
+
 
   const fillMovie = (title, releaseDate, thumbnail, isWatched) => {
     setMovies({
@@ -53,6 +51,8 @@ export const Body = () => {
         releaseDate={releaseDate}
         thumbnail={thumbnail}
         isWatched={isWatched}
+        movies={setMovies}
+        allMovies={movies}
       />
     )
   );
