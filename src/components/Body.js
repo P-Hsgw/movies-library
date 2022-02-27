@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "./Card";
 import uuid from "react-uuid";
 
-export const Body = ({movies, setMovies}) => {
-  async function fetchMovie(search) {
-    try {
-      const response = await fetch(
-        ` https://api.themoviedb.org/3/search/movie?api_key=9812bf8694ef69e36a998bad88ff117a&language=en-US&query=Dune&page=1&include_adult=false`,
-        { mode: "cors" }
-      );
-      const movie = await response.json();
-      console.log(movie.results[0]);
-    } catch (error) {
-      alert("Error:" + error);
-    }
-  }
-  const fillMovie = (title, releaseDate, thumbnail, isWatched) => {
-    setMovies({
-      title: title,
-      releaseDate: releaseDate,
-      thumbnail: thumbnail,
-      isWatched: isWatched,
-    });
-  };
+export const Body = ({movieska}) => {
+  const [movies, setMovies] = useState([]);
+  const [mounted, setMounted ] = useState(null)
 
+
+
+  useEffect(( ) => {
+    if (mounted === false) {
+      setMovies(
+        oldArray => [...oldArray,  movieska]
+       );
+    } 
+  }, [movieska])
+  useEffect(() => {
+    setMounted(false)
+  })
+ 
   const movieCards = movies.map(
     ({ title, releaseDate, thumbnail, isWatched }) => (
       <Card
@@ -37,6 +32,9 @@ export const Body = ({movies, setMovies}) => {
       />
     )
   );
+
+
+
   return (
     <>
       <div className="w-screen grid xl:grid-cols-5 gap-8 lg:grid-cols-3 md:grid-cols-2 mt-20">

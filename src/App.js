@@ -1,22 +1,14 @@
-import { Header } from "./components/Header"
-import { Body } from "./components/Body"
+import { Header } from "./components/Header";
+import { Body } from "./components/Body";
 import React, { useState } from "react";
 
-
 function App() {
-  const [movies, setMovies] = useState([
-    {
-      title: "Guardians ss the Galaxy",
-      releaseDate: "2018",
-      thumbnail: "PICTURE.JPG",
-      isWatched: true,
-    },
-  ]);
+  const [movie, setMovie] = useState();
 
   return (
     <div className="App">
-      <Header />
-      <Body movies={movies} setMovies={setMovies} />
+      <Header fetchMovies={setMovie}  />
+      <Body movieska={movie} />
     </div>
   );
 }
