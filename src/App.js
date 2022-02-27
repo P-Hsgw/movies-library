@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header fetchMovies={setMovie}  />
+      <Header fetchMovies={setMovie} />
       <Body movieska={movie} />
     </div>
   );

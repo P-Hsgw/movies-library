@@ -2,38 +2,33 @@ import React, { useState, useEffect } from "react";
 import { Card } from "./Card";
 import uuid from "react-uuid";
 
-export const Body = ({movieska}) => {
+export const Body = ({ movieska }) => {
   const [movies, setMovies] = useState([]);
-  const [mounted, setMounted ] = useState(null)
-
-
-
-  useEffect(( ) => {
-    if (mounted === false) {
-      setMovies(
-        oldArray => [...oldArray,  movieska]
-       );
-    } 
-  }, [movieska])
+  const [mounted, setMounted] = useState(null);
+  
   useEffect(() => {
-    setMounted(false)
-  })
- 
+    if (mounted === false) {
+      setMovies((oldArray) => [...oldArray, movieska]);
+    }
+  }, [movieska]);
+
+  useEffect(() => {
+    setMounted(false);
+  }, []);
+
   const movieCards = movies.map(
     ({ title, releaseDate, thumbnail, isWatched }) => (
       <Card
         key={uuid()}
         title={title}
         releaseDate={releaseDate}
-        thumbnail={<img src={`https://image.tmdb.org/t/p/w500/${thumbnail}`}/>}
+        thumbnail={<img src={`https://image.tmdb.org/t/p/w500/${thumbnail}`} alt={`${title}`} />}
         isWatched={isWatched}
         movies={setMovies}
         allMovies={movies}
       />
     )
   );
-
-
 
   return (
     <>
