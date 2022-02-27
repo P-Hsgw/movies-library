@@ -25,7 +25,7 @@ export const Body = ({movieska}) => {
         key={uuid()}
         title={title}
         releaseDate={releaseDate}
-        thumbnail={thumbnail}
+        thumbnail={<img src={`https://image.tmdb.org/t/p/w500/${thumbnail}`}/>}
         isWatched={isWatched}
         movies={setMovies}
         allMovies={movies}

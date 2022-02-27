@@ -26,7 +26,7 @@ export const Card = ({
         <div className="p-4">
           {title} - {releaseDate}
         </div>
-        <div className="p-28">{thumbnail}</div>
+        <div>{thumbnail}</div>
         <div>
           <Button additionalClass="mb-4" handleClick={changeIsWatched}>
             {watched ? "Watched" : "Want to watch"}

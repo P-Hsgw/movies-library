@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
 
-const Modal = ( {fetchMovies} ) => {
+const Modal = ({ fetchMovies }) => {
   const [movies, setMovies] = useState();
 
   const fillMovie = (title, releaseDate, thumbnail, isWatched) => {
@@ -14,9 +14,8 @@ const Modal = ( {fetchMovies} ) => {
   };
 
   useEffect(() => {
-    fetchMovies(movies)
+    fetchMovies(movies);
   }, [movies]);
-  
 
   async function fetchMovie(search) {
     try {
@@ -25,8 +24,13 @@ const Modal = ( {fetchMovies} ) => {
         { mode: "cors" }
       );
       const movie = await response.json();
-      console.log(movie.results[0])
-      fillMovie(movie.results[0].title, movie.results[0].release_date, "thumbnail", true)
+      console.log(movie.results[0]);
+      fillMovie(
+        movie.results[0].title,
+        movie.results[0].release_date,
+        movie.results[0].poster_path,
+        true
+      );
     } catch (error) {
       alert("Error:" + error);
     }
@@ -34,8 +38,8 @@ const Modal = ( {fetchMovies} ) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    const input = document.querySelector("input")
-    fetchMovie(input.value)
+    const input = document.querySelector("input");
+    fetchMovie(input.value);
   };
 
   return (
@@ -50,7 +54,7 @@ const Modal = ( {fetchMovies} ) => {
   );
 };
 
-export const Header = ({fetchMovies}) => {
+export const Header = ({ fetchMovies }) => {
   const [isVisible, setVisible] = useState(true);
 
   // const handleMovieClick = () => {
@@ -67,7 +71,7 @@ export const Header = ({fetchMovies}) => {
       </div>
       {isVisible ? (
         <div className="flex flex-wrap justify-center content-center w-screen h-auto">
-          <Modal fetchMovies={fetchMovies}/>
+          <Modal fetchMovies={fetchMovies} />
         </div>
       ) : (
         <></>
