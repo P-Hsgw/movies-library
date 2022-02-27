@@ -2,16 +2,7 @@ import React, { useState } from "react";
 import { Card } from "./Card";
 import uuid from "react-uuid";
 
-export const Body = () => {
-  const [movies, setMovies] = useState([
-    {
-      title: "Guardians of the Galaxy",
-      releaseDate: "2018",
-      thumbnail: "PICTURE.JPG",
-      isWatched: true,
-    },
-  ]);
-
+export const Body = ({movies, setMovies}) => {
   async function fetchMovie(search) {
     try {
       const response = await fetch(
@@ -19,12 +10,11 @@ export const Body = () => {
         { mode: "cors" }
       );
       const movie = await response.json();
-      console.log(movie);
+      console.log(movie.results[0]);
     } catch (error) {
       alert("Error:" + error);
     }
   }
-
   const fillMovie = (title, releaseDate, thumbnail, isWatched) => {
     setMovies({
       title: title,
