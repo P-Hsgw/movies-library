@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "./Card";
 import uuid from "react-uuid";
+import { Button } from "./Button";
 
 export const Body = ({ movieska }) => {
   const [movies, setMovies] = useState([]);
   const [mounted, setMounted] = useState(null);
-  
+
   useEffect(() => {
     if (mounted === false) {
       setMovies((oldArray) => [...oldArray, movieska]);
@@ -22,7 +23,12 @@ export const Body = ({ movieska }) => {
         key={uuid()}
         title={title}
         releaseDate={releaseDate}
-        thumbnail={<img src={`https://image.tmdb.org/t/p/w500/${thumbnail}`} alt={`${title}`} />}
+        thumbnail={
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${thumbnail}`}
+            alt={`${title}`}
+          />
+        }
         isWatched={isWatched}
         movies={setMovies}
         allMovies={movies}
@@ -30,8 +36,15 @@ export const Body = ({ movieska }) => {
     )
   );
 
+  const clearDatabase = () => {
+    setMovies([]);
+  };
+
   return (
     <>
+      <div className="flex flex-wrap justify-center content-center w-screen h-20">
+        <Button handleClick={clearDatabase}>Clear database</Button>
+      </div>
       <div className="w-screen grid xl:grid-cols-5 gap-8 lg:grid-cols-3 md:grid-cols-2 mt-20">
         {movieCards}
       </div>

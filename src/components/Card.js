@@ -31,7 +31,7 @@ export const Card = ({
         </div>
         <div>{thumbnail}</div>
         <div>
-          <Button additionalClass="mb-4" handleClick={changeIsWatched}>
+          <Button additionalClass={`mb-4 ${watched?`bg-red-500`:`bg-green-500`}`} handleClick={changeIsWatched}>
             {watched ? "Watched" : "Want to watch"}
           </Button>
           <Button

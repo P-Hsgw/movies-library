@@ -67,7 +67,6 @@ export const Header = ({ fetchMovies }) => {
         {/* <Button additionalClass="bg-red-500" >
           {isVisible ? "Close Search Bar" : "Add new movie"}
         </Button> */}
-        <Button>Clear saved movies</Button>
       </div>
       {isVisible ? (
         <div className="flex flex-wrap justify-center content-center w-screen h-auto">
