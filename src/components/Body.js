@@ -8,14 +8,25 @@ export const Body = ({ movieska }) => {
   const [mounted, setMounted] = useState(null);
 
   useEffect(() => {
-    if (mounted === false) {
-      setMovies((oldArray) => [...oldArray, movieska]);
+    const storedMovies = JSON.parse(localStorage.getItem('storedMovies'));
+    if (storedMovies) {
+     setMovies(storedMovies);
     }
-  }, [movieska]);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('storedMovies', JSON.stringify(movies));
+  }, [movies]);
 
   useEffect(() => {
     setMounted(false);
   }, []);
+
+  useEffect(() => {
+    if (mounted === false) {
+      setMovies((oldArray) => [...oldArray, movieska]);
+    }
+  }, [movieska]);
 
   const movieCards = movies.map(
     ({ title, releaseDate, thumbnail, isWatched }) => (
@@ -38,6 +49,7 @@ export const Body = ({ movieska }) => {
 
   const clearDatabase = () => {
     setMovies([]);
+    localStorage.clear()
   };
 
   return (
