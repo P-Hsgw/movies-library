@@ -15,7 +15,7 @@ const Modal = ({ fetchMovies }) => {
 
   useEffect(() => {
     fetchMovies(movies);
-  }, [movies]);
+  }, [fetchMovies, movies]);
 
   async function fetchMovie(search) {
     try {
@@ -55,7 +55,7 @@ const Modal = ({ fetchMovies }) => {
 };
 
 export const Header = ({ fetchMovies }) => {
-  const [isVisible, setVisible] = useState(true);
+  // const [isVisible, setVisible] = useState(true);
 
   // const handleMovieClick = () => {
   //   setVisible(!isVisible);
@@ -68,13 +68,9 @@ export const Header = ({ fetchMovies }) => {
           {isVisible ? "Close Search Bar" : "Add new movie"}
         </Button> */}
       </div>
-      {isVisible ? (
         <div className="flex flex-wrap justify-center content-center w-screen h-auto">
           <Modal fetchMovies={fetchMovies} />
         </div>
-      ) : (
-        <></>
-      )}
     </>
   );
 };
