@@ -9,10 +9,11 @@ export const Card = ({
   allMovies,
   movies,
 }) => {
-  const [watched, setIsWatched] = useState(isWatched);
 
   const changeIsWatched = () => {
-    setIsWatched(!watched);
+    const searchedMovie = allMovies.find((movie) => movie.title === title)
+    searchedMovie.isWatched =! searchedMovie.isWatched
+    console.log(isWatched)
   };
 
   const handleRemove = (allMovies, title, movies) => {
@@ -21,8 +22,8 @@ export const Card = ({
   };
 
   return (
-    <div className=" flex items-center justify-center ml-2 mr-2">
-      <div className="border-4 border-solid rounded-md w-89 text-center divide-y divide-fuchsia-300 h-min-max">
+    <div className=" flex items-center justify-center pl-4 pr-4">
+      <div className="border-2 border-solid rounded-md w-89 text-center divide-y divide-fuchsia-300 h-min-max">
         <div className="p-1">
           {title}
         </div>
@@ -31,8 +32,8 @@ export const Card = ({
         </div>
         <div>{thumbnail}</div>
         <div>
-          <Button additionalClass={`mb-4 ${watched?`bg-red-500`:`bg-green-500`}`} handleClick={changeIsWatched}>
-            {watched ? "Watched" : "Want to watch"}
+          <Button additionalClass={`mb-4 ${isWatched?`bg-red-500`:`bg-green-500`}`} handleClick={changeIsWatched}>
+            {isWatched ? "Watched" : "Want to watch"}
           </Button>
           <Button
             additionalClass="mb-4 mt-4"
